@@ -1,6 +1,6 @@
 
 <li class="header">MAIN NAVIGATION</li>
-<li class="active treeview">
+<li class="<?php if($this->uri->segment(1)==""||$this->uri->segment(1)=="dashboard"){echo "active";}?> treeview">
     <a href="assets/#">
     <i class="fa fa-dashboard"></i> <span>Dashboard</span>
     <span class="pull-right-container">
@@ -12,7 +12,7 @@
     <li class="<?php if($this->uri->segment(1)=="dashboard"){echo "active";}?>"><a href="<?php echo base_url();?>dashboard/"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
     </ul>
 </li>
-<li class="treeview">
+<li class="<?php if($this->uri->segment(1)=="odometer"||$this->uri->segment(1)=="temp"){echo "active";}?> treeview">
     <a href="assets/#">
     <i class="fa fa-car"></i> <span>Vehicle</span>
     <span class="pull-right-container">
@@ -20,8 +20,8 @@
     </span>
     </a>
     <ul class="treeview-menu">
-    <li class="<?php if($this->uri->segment(1)=="odo_list_disp"){echo "active";}?>"><a href="<?php echo base_url();?>odometer/"><i class="fa fa-circle-o"></i> Odometer</a></li>
-    <li><a href="assets/index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+    <li class="<?php if($this->uri->segment(1)=="odometer"){echo "active";}?>"><a href="<?php echo base_url();?>odometer/"><i class="fa fa-circle-o"></i> Odometer</a></li>
+    <li class="<?php if($this->uri->segment(1)=="books"){echo "active";}?>"><a href="<?php echo base_url();?>books/"><i class="fa fa-circle-o"></i> Books</a></li>
     </ul>
 </li>
 <li class="treeview">
