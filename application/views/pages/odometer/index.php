@@ -29,7 +29,7 @@
                   <th>Browser</th>
                   <th>Platform(s)</th>
                   <th>Engine version</th>
-                  <th>CSS grade<?php echo site_url() ?></th>
+                  <th>CSS grade</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -52,7 +52,7 @@
   $(function () {
     $('#example1').DataTable({
         "ajax": {
-            url : "<?php echo site_url("pages/books_page") ?>",
+            url : "<?php echo site_url("pages/odometer_page") ?>",
             type : 'GET'
         },
     })

@@ -32,10 +32,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $this->load->view('pages/dashboard/'.$page, $data);
             $this->load->view('templates/footer', $data);
         }
-
+        
         public function __construct() {
             Parent::__construct();
-            $this->load->model("books_model");
+            $this->load->model("odometer_model");
         }
 
         public function odometer($page = 'index')
@@ -46,34 +46,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             //         show_404();
             // }
 
-            $data['title'] = ucfirst($page); // Capitalize the first letter
-
-            $this->load->view('templates/header', $data);
-            $this->load->view('pages/odometer/'.$page, $data);
-            $this->load->view('templates/footer', $data);
+            $this->load->view('templates/header');
+            $this->load->view('pages/odometer/'.$page, array());
+            $this->load->view('templates/footer');
         }
 
-        public function __construct() {
-            Parent::__construct();
-            $this->load->model("books_model");
-        }
-        
-        public function books($page = 'index')
-        {
-            // if ( ! file_exists(APPPATH.'views/pages/test/'.$page.'.php'))
-            // {
-            //         // Whoops, we don't have a page for that!
-            //         show_404();
-            // }
-
-            $data['title'] = ucfirst($page); // Capitalize the first letter
-
-            // $this->load->view('templates/header', $data);
-            $this->load->view('pages/books/'.$page, $data);
-            // $this->load->view('templates/footer', $data);
-        }
-
-        public function books_page()
+        public function odometer_page()
      {
 
           // Datatables Variables
@@ -82,7 +60,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           $length = intval($this->input->get("length"));
 
 
-          $books = $this->books_model->get_books();
+          $books = $this->odometer_model->get_odometer();
 
           $data = array();
 
