@@ -51,6 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['books'] = 'books/index';
 $route['posts'] = 'posts/index';
+// $route['reports'] = 'reports/index';
 $route['default_controller'] = 'pages/view';
 $route['dashboard'] = 'pages/dashboard';
 $route['odometer'] = 'pages/odometer';

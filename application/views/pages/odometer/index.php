@@ -19,8 +19,13 @@
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">Data Table With Full Features</h3>
+
+              <!-- <a class="btn pull-right" target="_blank" href="<?php echo site_url('assets/PHPJasperXML2-master/examples/sample1.php') ?>"><i class="fa fa-print"></i></a> -->
+              <a class="btn pull-right" target="_blank" href="<?php echo base_url('reports/index') ?>"><i class="fa fa-print"></i></a>
             </div>
+            
             <!-- /.box-header -->
+            
             <div class="box-body">
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
