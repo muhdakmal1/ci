@@ -63,16 +63,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           $books = $this->odometer_model->get_odometer();
 
           $data = array();
+          
+          $countIndex = 1;
 
           foreach($books->result() as $r) {
 
                $data[] = array(
-                    $r->name,
-                    $r->price,
-                    $r->author,
-                    $r->rating . "/10 Stars",
-                    $r->publisher
+                    $r->$countIndex=$countIndex,
+                    $r->company,
+                    $r->section,
+                    $r->vehicle_no . "/10 Stars",
+                    $r->vehicle_model 
                );
+               $countIndex=$countIndex+1;
           }
 
           $output = array(

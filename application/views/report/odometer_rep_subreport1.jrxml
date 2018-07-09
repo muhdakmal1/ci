@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="odometer_rep_subreport1" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="a0eb953c-4e84-4fee-92a2-15cd6747af3f">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="461" splitType="Stretch">
+			<line>
+				<reportElement x="37" y="262" width="477" height="1" uuid="7e4613ff-86ee-4d37-a485-4ff0a9a6e105"/>
+			</line>
+			<staticText>
+				<reportElement x="37" y="414" width="454" height="42" uuid="6cb699b8-cbbf-44f8-9384-ab48a5b7dfd2"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Verdana" size="10" isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[As referring to the above subject, in the enhancement of Vehicle Management procedure in our current practice, Fleet Management unit have run an analysis on odometer reading for the past 3 months from Jan 2018 to March 2018.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="115" y="138" width="11" height="13" uuid="ef8aac6f-2cd3-4669-8a7b-0ebe289e15cb"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="37" y="188" width="78" height="13" uuid="7c39147e-34e2-47e2-ac4a-ed518802ec5f"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[REF. NO.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="115" y="213" width="11" height="13" uuid="3c3a0e58-b2f3-4c2e-b28a-5b36a24be909"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="115" y="239" width="11" height="13" uuid="6c305bce-696e-4532-9c2e-23ab995f4293"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="37" y="319" width="36" height="14" uuid="d7ee9d0f-23eb-4dcb-9978-d707562da963"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[(SOP)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="37" y="115" width="78" height="13" uuid="2d9d3dd3-af3c-489c-bc2e-896ff397857c"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[TO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="146" y="81" width="109" height="23" uuid="a3df4b0e-4554-43b8-8037-360aa8acddb5"/>
+				<textElement>
+					<font fontName="Verdana" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[URGENT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="37" y="162" width="78" height="13" uuid="ce1a4106-8736-4636-9d10-944508ccee6e"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[C.C]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="37" y="279" width="78" height="13" uuid="eb7cfe09-23e8-44a1-9b9d-c9ef87755a5b"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Mr]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="37" y="346" width="296" height="14" uuid="3c04953c-18aa-4908-b5fd-70a4051b4e8a"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[The responsibility of fuel card users: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="37" y="213" width="78" height="13" uuid="129788dd-f658-4292-9088-dc4d5ec42ef3"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[DATE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="37" y="239" width="78" height="13" uuid="3363868a-85f3-4082-a07d-c6851359a4e0"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[SUBJECT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="37" y="138" width="78" height="13" uuid="a0262936-9793-4568-9f7c-e6d6c84a97bf"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[FROM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="201" y="42" width="153" height="27" uuid="5abfae05-5ffc-4508-b514-1c6a7588b3f2"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MEMO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="75" y="319" width="416" height="14" uuid="e5612192-d45c-40db-a794-20c789204ca4"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[dated 01/05/2017, page 10 of 16 under Fuel Cards clause 4.2.10,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="201" y="30" width="153" height="14" uuid="f4af75bf-c1b6-4f8c-a044-9255150fa955"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[UEM EDGENTA BERHAD]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="69" width="555" height="1" forecolor="#0066FF" uuid="45680ea5-0f21-4589-b078-f304ccaee0c7"/>
+				<graphicElement>
+					<pen lineWidth="2.0"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="115" y="115" width="11" height="13" uuid="d6d370d0-794c-4784-84c8-e1d6ed67eb24"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="37" y="305" width="164" height="14" uuid="1192d2f9-a209-420f-b399-6c1d17322898"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Please be informed that under
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="37" y="81" width="99" height="23" uuid="e19c5a62-c179-4923-88c7-15d67c389b40"/>
+				<textElement>
+					<font fontName="Verdana" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PRIORITY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="115" y="188" width="11" height="13" uuid="e56ce29a-ad00-477b-8791-7c9c0ff5fdaf"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="115" y="162" width="11" height="13" uuid="df7db562-7b44-4075-bab4-ce1413ddae39"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="193" y="305" width="296" height="14" uuid="dc6577fd-f0f8-4562-a495-0f0167915e69"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Vehicle Management Standard Operating Procedure]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+</jasperReport>

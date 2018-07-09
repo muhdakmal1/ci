@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="odometer_rep" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isSummaryNewPage="true" uuid="ee720ac4-223b-4a3d-8c7c-86b0eedfc4f9">
+	<property name="ireport.zoom" value="1.0000000000000009"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\xampp\\htdocs\\ci\\application\\views\\report\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     sample1.`no` AS sample1_no,
+     sample1.`date` AS sample1_date,
+     sample1.`itemname` AS sample1_itemname,
+     sample1.`qty` AS sample1_qty,
+     sample1.`uom` AS sample1_uom
+FROM
+     `sample1` sample1]]>
+	</queryString>
+	<field name="sample1_no" class="java.lang.Integer"/>
+	<field name="sample1_date" class="java.sql.Date"/>
+	<field name="sample1_itemname" class="java.lang.String"/>
+	<field name="sample1_qty" class="java.lang.Integer"/>
+	<field name="sample1_uom" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="517" splitType="Stretch">
+			<subreport>
+				<reportElement x="1" y="3" width="554" height="237" uuid="7df3c506-aa14-452c-bf74-293908093e71"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "odometer_rep_subreport1.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="15" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="37" y="0" width="109" height="15" backcolor="#CCFFCC" uuid="6306abac-9b15-4035-aeba-3d928de27f9c"/>
+				<box leftPadding="3">
+					<pen lineColor="#000000"/>
+					<topPen lineWidth="0.1" lineColor="#000000"/>
+					<leftPen lineWidth="0.1" lineColor="#000000"/>
+					<bottomPen lineWidth="0.1" lineColor="#000000"/>
+					<rightPen lineWidth="0.1" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Vehicle No.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="297" y="0" width="99" height="15" backcolor="#CCFFCC" uuid="14b6846d-9718-4ed2-9928-37d65c8af03a"/>
+				<box leftPadding="3">
+					<pen lineColor="#000000"/>
+					<topPen lineWidth="0.1" lineColor="#000000"/>
+					<leftPen lineWidth="0.1" lineColor="#000000"/>
+					<bottomPen lineWidth="0.1" lineColor="#000000"/>
+					<rightPen lineWidth="0.1" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Section]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="396" y="0" width="105" height="15" backcolor="#CCFFCC" uuid="d8a71ae2-98bc-40da-964a-6085c048fa24"/>
+				<box leftPadding="3">
+					<pen lineColor="#000000"/>
+					<topPen lineWidth="0.1" lineColor="#000000"/>
+					<leftPen lineWidth="0.1" lineColor="#000000"/>
+					<bottomPen lineWidth="0.1" lineColor="#000000"/>
+					<rightPen lineWidth="0.1" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Result]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="146" y="0" width="151" height="15" backcolor="#CCFFCC" uuid="4cf089fe-718f-4092-9ad4-585aa47755d9"/>
+				<box leftPadding="3">
+					<pen lineColor="#000000"/>
+					<topPen lineWidth="0.1" lineColor="#000000"/>
+					<leftPen lineWidth="0.1" lineColor="#000000"/>
+					<bottomPen lineWidth="0.1" lineColor="#000000"/>
+					<rightPen lineWidth="0.1" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Model]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="37" y="0" width="109" height="20" uuid="3f981ba9-8141-496f-a6b1-0b5bf40d7b58"/>
+				<box>
+					<topPen lineWidth="0.1"/>
+					<leftPen lineWidth="0.1"/>
+					<bottomPen lineWidth="0.1"/>
+					<rightPen lineWidth="0.1"/>
+				</box>
+				<textElement verticalAlignment="Bottom"/>
+			</textField>
+			<textField>
+				<reportElement x="146" y="0" width="151" height="20" uuid="ca167c38-ad39-4759-9b98-2ae4cd9888ab"/>
+				<box>
+					<topPen lineWidth="0.1"/>
+					<leftPen lineWidth="0.1"/>
+					<bottomPen lineWidth="0.1"/>
+					<rightPen lineWidth="0.1"/>
+				</box>
+				<textElement verticalAlignment="Bottom"/>
+			</textField>
+			<textField>
+				<reportElement x="297" y="0" width="99" height="20" uuid="f8028854-90ae-4562-abfd-595bd66d7405"/>
+				<box>
+					<topPen lineWidth="0.1"/>
+					<leftPen lineWidth="0.1"/>
+					<bottomPen lineWidth="0.1"/>
+					<rightPen lineWidth="0.1"/>
+				</box>
+				<textElement verticalAlignment="Bottom"/>
+			</textField>
+			<textField>
+				<reportElement x="396" y="0" width="105" height="20" uuid="174c5751-14ea-4080-a002-63672530f609"/>
+				<box>
+					<topPen lineWidth="0.1"/>
+					<leftPen lineWidth="0.1"/>
+					<bottomPen lineWidth="0.1"/>
+					<rightPen lineWidth="0.1"/>
+				</box>
+				<textElement verticalAlignment="Bottom"/>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="147">
+			<staticText>
+				<reportElement x="37" y="13" width="464" height="60" uuid="1b77c7be-ef06-4f22-b2a0-b2acaad7ebe1"/>
+				<text><![CDATA[The result shows that there was one (1) vehicle where odometer was not keyed in and five (5) vehicles where the odometer was wrongly keyed in resulting that Admin Unit failed to maintain and track fuel efficiency.
+
+Please provide justifications for each vehicle as per Appendix 1.
+
+
+Thank you.
+
+
+Regards,
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="37" y="106" width="100" height="15" uuid="b51cd213-6892-4bba-831f-c221a8491274"/>
+				<text><![CDATA[SHAIFUL NOR AZAHAR SHAIK OSMAN]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

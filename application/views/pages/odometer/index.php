@@ -20,8 +20,12 @@
             <div class="box-header">
               <h3 class="box-title">Data Table With Full Features</h3>
 
+              <div class="btn-group pull-right">
               <!-- <a class="btn pull-right" target="_blank" href="<?php echo site_url('assets/PHPJasperXML2-master/examples/sample1.php') ?>"><i class="fa fa-print"></i></a> -->
-              <a class="btn pull-right" target="_blank" href="<?php echo base_url('reports/index') ?>"><i class="fa fa-print"></i></a>
+                <a class="btn btn-primary btn-flat" target="_blank" href="<?php echo base_url('reports/phpwordtemplate') ?>"><i class="fa fa-file-word-o"></i></a>
+                <a class="btn btn-primary btn-flat" target="_blank" href="<?php echo base_url('reports/index') ?>"><i class="fa fa-print"></i></a>
+                <a class="btn btn-primary btn-flat" target="_blank" href="<?php echo base_url('reports/odometer') ?>"><i class="fa fa-print"></i></a>
+              </div>
             </div>
             
             <!-- /.box-header -->
@@ -30,11 +34,11 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Rendering engine</th>
-                  <th>Browser</th>
-                  <th>Platform(s)</th>
-                  <th>Engine version</th>
-                  <th>CSS grade</th>
+                  <th>No.</th>
+                  <th>Company</th>
+                  <th>Section</th>
+                  <th>PIC Name</th>
+                  <th>Total Warning Vehicle</th>
                 </tr>
                 </thead>
                 <tbody>
