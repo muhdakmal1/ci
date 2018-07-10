@@ -1,3 +1,10 @@
+<style>
+  .modal-info .modal-body {
+    background-color: #00c0ef00 !important;
+    color:#000 !important;
+  }
+</style>
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -24,7 +31,7 @@
               <!-- <a class="btn pull-right" target="_blank" href="<?php echo site_url('assets/PHPJasperXML2-master/examples/sample1.php') ?>"><i class="fa fa-print"></i></a> -->
                 <a class="btn btn-primary btn-flat" target="_blank" href="<?php echo base_url('reports/phpwordtemplate') ?>"><i class="fa fa-file-word-o"></i></a>
                 <a class="btn btn-primary btn-flat" target="_blank" href="<?php echo base_url('reports/index') ?>"><i class="fa fa-print"></i></a>
-                <a class="btn btn-primary btn-flat" target="_blank" href="<?php echo base_url('reports/odometer') ?>"><i class="fa fa-print"></i></a>
+                <a class="btn btn-default btn-flat" data-toggle="modal" data-target="#modal-info"><i class="icon-cog fa fa-plus" style="color:#3c8dbc"></i></a>
               </div>
             </div>
             
@@ -60,10 +67,10 @@
 <script>
   $(function () {
     $('#example1').DataTable({
-        "ajax": {
-            url : "<?php echo site_url("pages/odometer_page") ?>",
-            type : 'GET'
-        },
-    })
-  })
+          "ajax": {
+              url : "<?php echo site_url("pages/odometer_page") ?>",
+              type : 'GET'
+          },
+      })
+  });
 </script>

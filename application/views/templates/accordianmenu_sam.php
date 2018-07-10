@@ -21,7 +21,7 @@
     </a>
     <ul class="treeview-menu">
     <li class="<?php if($this->uri->segment(1)=="odometer"){echo "active";}?>"><a href="<?php echo base_url();?>odometer/"><i class="fa fa-circle-o"></i> Odometer</a></li>
-    <li class="<?php if($this->uri->segment(1)=="books"){echo "active";}?>"><a href="<?php echo base_url();?>books/"><i class="fa fa-circle-o"></i> Books</a></li>
+    <li class="<?php if($this->uri->segment(1)=="books"){echo "active";}?>"><a href="<?php echo base_url();?>excel/"><i class="fa fa-circle-o"></i> Books</a></li>
     </ul>
 </li>
 <li class="treeview">

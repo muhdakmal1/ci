@@ -47,7 +47,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             // }
 
             $this->load->view('templates/header');
-            $this->load->view('pages/odometer/'.$page, array());
+            $this->load->view('pages/odometer/'.$page, array('error' => ' ' ));
             $this->load->view('templates/footer');
         }
 
@@ -72,7 +72,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     $r->$countIndex=$countIndex,
                     $r->company,
                     $r->section,
-                    $r->vehicle_no . "/10 Stars",
+                    $r->vehicle_no,
                     $r->vehicle_model 
                );
                $countIndex=$countIndex+1;

@@ -51,6 +51,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['books'] = 'books/index';
 $route['posts'] = 'posts/index';
+$route['csv'] = 'upload/index_csv';
+$route['excel'] = 'upload/index_excel';
 // $route['reports'] = 'reports/index';
 $route['default_controller'] = 'pages/view';
 $route['dashboard'] = 'pages/dashboard';
