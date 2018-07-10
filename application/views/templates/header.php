@@ -30,6 +30,10 @@
   <!-- DataTables -->
   <link rel="stylesheet" href="<?php echo site_url('assets/') ?>bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
 
+  <!-- bootstrap-select -->
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -379,6 +383,13 @@
 <script src="<?php echo site_url('assets/') ?>dist/js/demo.js"></script>
 <!-- ChartJS -->
 <script src="<?php echo site_url('assets/') ?>bower_components/chart.js/Chart.js"></script>
+
+<!-- bootstrap-select -->
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+<!-- (Optional) Latest compiled and minified JavaScript translation files -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/i18n/defaults-*.min.js"></script>
+
 
 <!--##### dashboard #####-->
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->

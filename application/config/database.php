@@ -95,4 +95,4 @@ $db['default'] = array(
 	'save_queries' => TRUE
 );
 
-$db['default']['port'] = 3307;
+// $db['default']['port'] = 3307;
