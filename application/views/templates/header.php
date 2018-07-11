@@ -42,7 +42,7 @@
   <![endif]-->
 
   <!-- Google Font -->
-  <link rel="stylesheet" href="<?php echo site_url('assets/') ?>https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -383,6 +383,11 @@
 <script src="<?php echo site_url('assets/') ?>dist/js/demo.js"></script>
 <!-- ChartJS -->
 <script src="<?php echo site_url('assets/') ?>bower_components/chart.js/Chart.js"></script>
+
+<!-- Custom js -->
+<script src="<?php echo site_url('assets/') ?>build/custom_js.js"></script>
+
+<script src="<?php echo site_url('assets/') ?>build/custom_datatable.js"></script>
 
 <!-- bootstrap-select -->
 <!-- Latest compiled and minified JavaScript -->

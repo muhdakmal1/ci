@@ -64,14 +64,14 @@
             </div>
 
             <div class="box-body">
-              <table id="example1" class="table table-bordered table-striped">
+              <table id="posts" class="table table-bordered table-striped">
                 <thead>
                 <tr>
                   <th>No.</th>
                   <th>Company</th>
                   <th>Section</th>
                   <th>PIC Name</th>
-                  <th>Total Warning Vehicle</th>
+                  <!-- <th>Total Warning Vehicle</th> -->
                 </tr>
                 </thead>
                 <tbody>
@@ -91,12 +91,24 @@
   <!-- /.content-wrapper -->
 
 <script>
-  $(function () {
-    $('#example1').DataTable({
-          "ajax": {
-              url : "<?php echo site_url("pages/odometer_page") ?>",
-              type : 'GET'
-          },
-      })
-  });
+
+$(document).ready(function () {
+    $('#posts').DataTable({
+      "processing": true,
+      "serverSide":true,
+      "ajax": $.fn.dataTable.pipeline({
+        url : "<?php echo site_url("pages/posts") ?>",
+        dataType : "json",
+		    type : "POST",
+        data :{  '<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>' }
+      }),
+      "columns": [
+		          { "data": "id" },
+		          { "data": "title" },
+		          { "data": "body" },
+		          { "data": "created_at" },
+		       ]	 
+
+	    });
+    });
 </script>

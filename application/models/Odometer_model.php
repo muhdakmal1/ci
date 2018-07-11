@@ -2,6 +2,68 @@
 
 class Odometer_Model extends CI_Model
 {
+    function allposts_count()
+    {   
+        $query = $this
+                ->db
+                ->get('vehicle_list');
+    
+        return $query->num_rows();  
+
+    }
+    
+    function allposts($limit,$start,$col,$dir)
+    {   
+       $query = $this
+                ->db
+                ->limit($limit,$start)
+                ->order_by($col,$dir)
+                ->get('vehicle_list');
+        
+        if($query->num_rows()>0)
+        {
+            return $query->result(); 
+        }
+        else
+        {
+            return null;
+        }
+        
+    }
+   
+    function posts_search($limit,$start,$search,$col,$dir)
+    {
+        $query = $this
+                ->db
+                ->like('id',$search)
+                ->or_like('title',$search)
+                ->limit($limit,$start)
+                ->order_by($col,$dir)
+                ->get('vehicle_list');
+        
+       
+        if($query->num_rows()>0)
+        {
+            return $query->result();  
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    function posts_search_count($search)
+    {
+        $query = $this
+                ->db
+                ->like('id',$search)
+                ->or_like('title',$search)
+                ->get('vehicle_list');
+    
+        return $query->num_rows();
+    } 
+
+    #####################################################
 
      public function get_odometer()
      {

@@ -58,10 +58,68 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $this->load->view('templates/footer');
         }
 
+        public function posts()
+        {
+
+                $columns = array( 
+                                    0 =>'id', 
+                                    1 =>'title',
+                                    2=> 'body',
+                                    3=> 'created_at',
+                                    4=> 'id',
+                                );
+
+                $limit = $this->input->post('length');
+                $start = $this->input->post('start');
+                $order = $this->input->post('order')[0]['column'];
+                $dir = $this->input->post('order')[0]['dir'];
+        
+                $totalData = $this->odometer_model->allposts_count();
+                    
+                $totalFiltered = $totalData; 
+                    
+                if(empty($this->input->post('search')['value']))
+                {            
+                    $posts = $this->odometer_model->allposts($limit,$start,$order,$dir);
+                }
+                else {
+                    $search = $this->input->post('search')['value']; 
+
+                    $posts =  $this->odometer_model->posts_search($limit,$start,$search,$order,$dir);
+
+                    $totalFiltered = $this->odometer_model->posts_search_count($search);
+                }
+
+                $data = array();
+                if(!empty($posts))
+                {
+                    foreach ($posts as $post)
+                    {
+
+                        $nestedData['id'] = $post->vehicle_no;
+                        $nestedData['title'] = $post->vehicle_model;
+                        $nestedData['body'] = $post->vehicle_type;
+                        $nestedData['created_at'] = $post->odo_temp;
+                        
+                        $data[] = $nestedData;
+
+                    }
+                }
+                
+                $json_data = array(
+                            "draw"            => intval($this->input->post('draw')),  
+                            "recordsTotal"    => intval($totalData),  
+                            "recordsFiltered" => intval($totalFiltered), 
+                            "data"            => $data   
+                            );
+                    
+                echo json_encode($json_data); 
+        }
+
         public function odometer_page()
         {
 
-          // Datatables Variables
+        // Datatables Variables
           $draw = intval($this->input->get("draw"));
           $start = intval($this->input->get("start"));
           $length = intval($this->input->get("length"));
