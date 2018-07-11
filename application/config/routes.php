@@ -57,6 +57,7 @@ $route['excel'] = 'upload/index_excel';
 $route['default_controller'] = 'pages/view';
 $route['dashboard'] = 'pages/dashboard';
 $route['odometer'] = 'pages/odometer';
+$route['transaction_odometer'] = 'pages/transaction_odometer';
 $route['(:any)'] = 'pages/view/$1';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

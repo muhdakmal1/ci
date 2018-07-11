@@ -27,7 +27,7 @@ class Outsource_model extends CI_Model {
 
     function insert($data)
     {
-        var_dump($this->load->dbforge());
-        // $this->db->insert_batch('tbl_user', $data);
+        // var_dump($this->load->dbforge());
+        $this->db->insert_batch('tbl_user', $data);
     }
 }

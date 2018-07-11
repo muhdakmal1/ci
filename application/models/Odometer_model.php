@@ -16,6 +16,26 @@ class Odometer_Model extends CI_Model
         return $this->db->query($query_vehicle_list);
      }
 
+     public function get_transaction_odometer()
+     {
+         $query_transaction_list = "SELECT 
+                                        odo_vehicle_number,
+                                        odo_transaction_type,
+                                        odo_date,
+                                        odometer
+                                    FROM table8
+                                    ORDER BY odo_vehicle_number ASC, str_to_date( odo_date, '%d/%m/%Y' ) DESC";
+
+        //   return $this->db->get("vehicle_list");
+        return $this->db->query($query_transaction_list);
+     }
+
+     function insert_transaction_odometer($data)
+    {
+        // var_dump($this->load->dbforge());
+        $this->db->insert_batch('table8', $data);
+    }
+
      public function reportShow($path) {
         error_reporting(0);   
         $this->load->library('PHPJasperXML');
