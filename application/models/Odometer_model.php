@@ -35,8 +35,8 @@ class Odometer_Model extends CI_Model
     {
         $query = $this
                 ->db
-                ->like('id',$search)
-                ->or_like('title',$search)
+                ->like('vehicle_no',$search)
+                // ->or_like('title',$search)
                 ->limit($limit,$start)
                 ->order_by($col,$dir)
                 ->get('vehicle_list');
@@ -56,8 +56,8 @@ class Odometer_Model extends CI_Model
     {
         $query = $this
                 ->db
-                ->like('id',$search)
-                ->or_like('title',$search)
+                ->like('vehicle_no',$search)
+                // ->or_like('title',$search)
                 ->get('vehicle_list');
     
         return $query->num_rows();
@@ -78,6 +78,7 @@ class Odometer_Model extends CI_Model
         return $this->db->query($query_vehicle_list);
      }
 
+     //Data Transaction Odometer List//
      public function get_transaction_odometer()
      {
          $query_transaction_list = "SELECT 
@@ -89,8 +90,39 @@ class Odometer_Model extends CI_Model
                                     ORDER BY odo_vehicle_number ASC, str_to_date( odo_date, '%d/%m/%Y' ) DESC";
 
         //   return $this->db->get("vehicle_list");
-        return $this->db->query($query_transaction_list);
+        $transaction_qry = $this->db->query($query_transaction_list);
+
+        return $transaction_qry->num_rows(); 
      }
+
+     function get_alltransaction_odometer($limit,$start,$col,$dir)
+    {   
+        
+        $query_transaction_list = "SELECT 
+                                        id,
+                                        odo_vehicle_number,
+                                        odo_transaction_type,
+                                        odo_date,
+                                        odometer
+                                    FROM table8
+                                    ORDER BY odo_vehicle_number ASC, str_to_date( odo_date, '%d/%m/%Y' ) DESC";
+
+        $query = $this
+                ->db
+                ->limit($limit,$start)
+                ->order_by($col,$dir)
+                ->query($query_transaction_list);
+        
+        if($query->num_rows()>0)
+        {
+            return $query->result(); 
+        }
+        else
+        {
+            return null;
+        }
+        
+    }
 
      function insert_transaction_odometer($data)
     {

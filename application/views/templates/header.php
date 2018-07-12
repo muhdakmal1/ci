@@ -6,6 +6,7 @@
   <title>AdminLTE 2 | Dashboard</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
   <!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href="<?php echo site_url('assets/') ?>bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
@@ -384,17 +385,9 @@
 <!-- ChartJS -->
 <script src="<?php echo site_url('assets/') ?>bower_components/chart.js/Chart.js"></script>
 
-<!-- Custom js -->
-<script src="<?php echo site_url('assets/') ?>build/custom_js.js"></script>
-
-<script src="<?php echo site_url('assets/') ?>build/custom_datatable.js"></script>
-
 <!-- bootstrap-select -->
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
-<!-- (Optional) Latest compiled and minified JavaScript translation files -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/i18n/defaults-*.min.js"></script>
-
 
 <!--##### dashboard #####-->
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
@@ -405,3 +398,5 @@
 <!-- DataTables -->
 <script src="<?php echo site_url('assets/') ?>bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="<?php echo site_url('assets/') ?>bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script> -->

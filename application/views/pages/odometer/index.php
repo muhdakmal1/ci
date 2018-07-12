@@ -64,7 +64,7 @@
             </div>
 
             <div class="box-body">
-              <table id="posts" class="table table-bordered table-striped">
+              <table id="all" class="table table-bordered table-striped">
                 <thead>
                 <tr>
                   <th>No.</th>
@@ -90,18 +90,20 @@
   </div>
   <!-- /.content-wrapper -->
 
+<!-- Custom js -->
+<script src="<?php echo base_url('assets/') ?>build/myserv.datatable.min.js"></script>
 <script>
 
 $(document).ready(function () {
-    $('#posts').DataTable({
+    $('#all').DataTable({
       "processing": true,
       "serverSide":true,
-      "ajax": $.fn.dataTable.pipeline({
+      "ajax": {
         url : "<?php echo site_url("pages/posts") ?>",
         dataType : "json",
 		    type : "POST",
         data :{  '<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>' }
-      }),
+      },
       "columns": [
 		          { "data": "id" },
 		          { "data": "title" },

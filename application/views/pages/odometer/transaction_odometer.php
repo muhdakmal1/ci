@@ -1,3 +1,9 @@
+<style>
+td.highlight {
+        font-weight: bold;
+        color: blue;
+    }
+</style>
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -67,7 +73,8 @@
                   <th>Section</th>
                   <th>Date</th>
                   <th>Odometer</th>
-                  <th>Odometer</th>
+                  <th>Variance</th>
+                  <th>Remark</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -86,14 +93,37 @@
   </div>
   <!-- /.content-wrapper -->
 
+<!-- Custom js -->
+<script src="<?php echo base_url('assets/') ?>build/myserv.datatable.min.js"></script>
 <script>
 
-    var table_trans = $('#transaction_list').DataTable({
-          "ajax": {
-              url : "<?php echo site_url("pages/data_transaction_odometer") ?>",
-              type : 'GET'
-          },
+  $(document).ready(function () {
+    var transaction_tb = $('#transaction_list').DataTable({
+      "processing": true,
+      "serverSide":true,
+      "ajax": {
+        url : "<?php echo site_url("pages/data_transaction_odometer") ?>",
+        dataType : "json",
+        type : "POST",
+        data :{  '<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>' }
+      },
+      "fnRowCallback": function ( row, data ) {
+            if ( data[5]>0 ) {
+                $('td', row).eq(5).addClass('highlight');
+            }
+        },
+      "columns": [
+              { "data": "id" },
+              { "data": "vehicle_no" },
+              { "data": "transaction_type" },
+              { "data": "date" },
+              { "data": "odometer" },
+              { "data": "variance" },
+              { "data": "remark" },
+            ]	 
+
       });
+  });
   
   refresh_table = function() {
     $('#transaction_list').DataTable().ajax.reload();
