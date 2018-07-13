@@ -107,11 +107,30 @@ td.highlight {
         type : "POST",
         data :{  '<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>' }
       },
-      "fnRowCallback": function ( row, data ) {
-            if ( data[5]>0 ) {
-                $('td', row).eq(5).addClass('highlight');
-            }
-        },
+      "rowCallback": function( row, data ) {
+        if(data.remark=="Incorrect"){
+          $('td:eq(6)', row).css( 'background-color','yellow' );
+        }
+        else if(data.remark=="Not Key in Odometer"){
+          $('td:eq(6)', row).css( 'background-color','red' );
+        }
+        else if(data.variance=="-"){
+          $('td', row).css( 'background-color','green' );
+        }
+        
+      },
+      // "columnDefs": [
+      //       {
+      //           // The `data` parameter refers to the data for the cell (defined by the
+      //           // `data` option, which defaults to the column being worked with, in
+      //           // this case `data: 0`.
+      //           "render": function ( data, type, row ) {
+      //               return data +' ('+ row.id+')';
+      //           },
+      //           "targets": 2
+      //       },
+      //       { "visible": false,  "targets": [ 3 ] }
+      //   ],
       "columns": [
               { "data": "id" },
               { "data": "vehicle_no" },
@@ -119,7 +138,7 @@ td.highlight {
               { "data": "date" },
               { "data": "odometer" },
               { "data": "variance" },
-              { "data": "remark" },
+              { "data": "remark", "name": "color" },
             ]	 
 
       });

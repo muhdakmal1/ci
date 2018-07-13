@@ -5,6 +5,8 @@ include_once(APPPATH."third_party/PhpWord/Autoloader.php");
 
 use PhpOffice\PhpWord\Autoloader;
 use PhpOffice\PhpWord\Settings;
+use PhpOffice\PhpWord\Shared\Converter;
+use PhpOffice\PhpWord\Style\TablePosition;
 Autoloader::register();
 Settings::loadConfig();
 
@@ -17,11 +19,26 @@ class Reports extends CI_Controller
 
 		//  create new file and remove Compatibility mode from word title
 
-		$templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('application\third_party\PhpWord\template_memo.docx');
- 
-		$templateProcessor->setValue('pic_name', 'hey');
+		$templateProcessor = new \PhpOffice\PhpWord\PhpWord();
+		$temp = $templateProcessor->loadTemplate('application\third_party\PhpWord\template_memo.docx');
+		$temp->setValue('pic_name', 'hey');
 		
-		$templateProcessor->saveAs('MyWordFile.docx');
+		//$phpWord = new \PhpOffice\PhpWord\PhpWord();
+		$section = $temp->addSection();
+		$header = array('size' => 16, 'bold' => true);
+		//1. Basic table
+		$rows = 10;
+		$cols = 5;
+		//$section->addText('Basic table', $header);
+		$table = $section->addTable();
+		for ($r = 1; $r <= 8; $r++) {
+			$table->addRow();
+			for ($c = 1; $c <= 5; $c++) {
+				$table->addCell(1750)->addText("Row {$r}, Cell {$c}");
+			}
+		}
+
+		$temp->saveAs('MyWordFile.docx');
 		// send results to browser to download
 		header('Content-Description: File Transfer');
 		header('Content-Type: application/octet-stream');

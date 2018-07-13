@@ -240,7 +240,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             $nestedData['vehicle_no'] = $post->odo_vehicle_number;
                             $nestedData['transaction_type'] = $post->odo_transaction_type;
                             $nestedData['date'] = $post->odo_date;
-                            $nestedData['variance'] = 0;
+                            $nestedData['variance'] = '-';
                             $nestedData['odometer'] = $post->odometer;
                             $nestedData['index'] = $post->id;
                         }
