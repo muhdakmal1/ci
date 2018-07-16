@@ -19,15 +19,15 @@ class Outsource_model extends CI_Model {
     // }
 
     function select()
-    {
-    $this->db->order_by('id', 'DESC');
-    $query = $this->db->get('tbl_user');
-    return $query;
-    }
+	{
+		$this->db->order_by('id', 'DESC');
+		$query = $this->db->get('table9');
+		return $query;
+	}
 
-    function insert($data)
-    {
-        // var_dump($this->load->dbforge());
-        $this->db->insert_batch('tbl_user', $data);
-    }
+	function insert($data)
+	{
+        $this->db->insert_batch('table9',$data);
+        
+	}
 }

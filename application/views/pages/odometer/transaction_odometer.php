@@ -32,9 +32,18 @@ td.highlight {
                 <a class="btn btn-primary btn-flat" target="_blank" href="<?php echo base_url('reports/index') ?>"><i class="fa fa-print"></i></a>
                 <a class="btn btn-primary btn-flat" onclick="refresh_table()"><i class="fa fa-car"></i></a>
                 <a class="btn btn-default btn-flat"><i class="icon-cog fa fa-plus" style="color:#3c8dbc"></i></a>
-                <form method="post" id="import_form" enctype="multipart/form-data">
+                <!-- <form method="post" id="import_form" enctype="multipart/form-data">
                   <input type="file" name="file" id="file" required accept=".xls, .xlsx, .csv" /></p>
                   <input type="submit" name="import" value="Import" id="import" class="btn btn-info" />
+                  </form> -->
+
+                  <form method="post" id="import_form" enctype="multipart/form-data">
+                  <div class="form-group">
+                    <label>Select CSV File</label>
+                    <input type="file" name="file" id="file" required accept=".csv" />
+                  </div>
+                  <br />
+                  <button type="submit" name="import_csv" class="btn btn-info" id="import_csv_btn">Import CSV</button>
                   </form>
               </div>
             </div>
@@ -108,7 +117,7 @@ td.highlight {
         data :{  '<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>' }
       },
       "rowCallback": function( row, data ) {
-        if(data.remark=="Incorrect"){
+        if(data.remark=="Incorrect Odometer"){
           $('td:eq(6)', row).css( 'background-color','yellow' );
         }
         else if(data.remark=="Not Key in Odometer"){
@@ -151,7 +160,7 @@ td.highlight {
   $('#import_form').on('submit', function(event){
     event.preventDefault();
     $.ajax({
-      url:"<?php echo base_url(); ?>pages/import_data_csv",
+      url:"<?php echo site_url(); ?>upload/import_data_csv",
       method:"POST",
       data:new FormData(this),
       contentType:false,
@@ -162,7 +171,7 @@ td.highlight {
       },
       success:function(data)
       {
-        table_trans.ajax.reload();
+        transaction_tb.ajax.reload();
       }
     });
 

@@ -31,7 +31,7 @@
         </ul>
     </li>
     <li class="<?php if($this->uri->segment(1)=="books"){echo "active";}?>">
-        <a href="#"><i class="fa fa-circle-o"></i> Transaction Odometer
+        <a href="<?php echo base_url();?>csv/"><i class="fa fa-circle-o"></i> Transaction Odometer
         </a>
     </li>
     </ul>

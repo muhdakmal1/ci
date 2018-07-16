@@ -18,25 +18,33 @@ class Reports extends CI_Controller
 		$news = $this->phpword_model->get_news();
 
 		//  create new file and remove Compatibility mode from word title
-
+		$iteration = 1;
 		$templateProcessor = new \PhpOffice\PhpWord\PhpWord();
 		$temp = $templateProcessor->loadTemplate('application\third_party\PhpWord\template_memo.docx');
 		$temp->setValue('pic_name', 'hey');
 		
-		//$phpWord = new \PhpOffice\PhpWord\PhpWord();
-		$section = $temp->addSection();
-		$header = array('size' => 16, 'bold' => true);
-		//1. Basic table
-		$rows = 10;
-		$cols = 5;
-		//$section->addText('Basic table', $header);
-		$table = $section->addTable();
-		for ($r = 1; $r <= 8; $r++) {
-			$table->addRow();
-			for ($c = 1; $c <= 5; $c++) {
-				$table->addCell(1750)->addText("Row {$r}, Cell {$c}");
-			}
+		$temp->cloneRow('vehicle_no','5');
+
+		foreach ($news as $data)
+		{
+			$temp->setValue('vehicle_no#'.$iteration,$data['vehicle_no']);
+			$iteration++;
 		}
+
+		//$phpWord = new \PhpOffice\PhpWord\PhpWord();
+		// $section = $temp->addSection();
+		// $header = array('size' => 16, 'bold' => true);
+		// //1. Basic table
+		// $rows = 10;
+		// $cols = 5;
+		// //$section->addText('Basic table', $header);
+		// $table = $section->addTable();
+		// for ($r = 1; $r <= 8; $r++) {
+		// 	$table->addRow();
+		// 	for ($c = 1; $c <= 5; $c++) {
+		// 		$table->addCell(1750)->addText("Row {$r}, Cell {$c}");
+		// 	}
+		// }
 
 		$temp->saveAs('MyWordFile.docx');
 		// send results to browser to download
