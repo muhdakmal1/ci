@@ -123,9 +123,9 @@ td.highlight {
         else if(data.remark=="Not Key in Odometer"){
           $('td:eq(6)', row).css( 'background-color','red' );
         }
-        else if(data.variance=="-"){
-          $('td', row).css( 'background-color','green' );
-        }
+        // else if(data.variance=="-"){
+        //   $('td', row).css( 'background-color','green' );
+        // }
         
       },
       // "columnDefs": [

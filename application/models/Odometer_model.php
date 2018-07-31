@@ -95,23 +95,71 @@ class Odometer_Model extends CI_Model
         return $transaction_qry->num_rows(); 
      }
 
-     function get_alltransaction_odometer($limit,$start,$col,$dir)
+    function get_alltransaction_odometer($limit,$start,$col,$dir)
     {   
-        
         $query_transaction_list = "SELECT 
-                                        id,
-                                        odo_vehicle_number,
-                                        odo_transaction_type,
-                                        odo_date,
-                                        odometer
-                                    FROM table8
-                                    ORDER BY odo_vehicle_number ASC, str_to_date( odo_date, '%d/%m/%Y' ) DESC";
+                                        t1.id,
+                                        t1.odo_vehicle_number,
+                                        t1.odo_transaction_type,
+                                        t1.odo_date,
+                                        t1.odometer
+                                        -- coalesce(t1.odometer - (select t2.odometer from table8 t2 ORDER BY odo_vehicle_number ASC, str_to_date( odo_date, '%d/%m/%Y %H:%i' ) DESC), t1.odometer) as variance
+                                    FROM table8 t1
+                                    ORDER BY t1.odo_vehicle_number ASC, str_to_date( t1.odo_date, '%d/%m/%Y %H:%i' ) DESC, $col $dir
+                                    LIMIT $start,$limit";
+        $start2 = $start + 1;
+        $limit2 = $limit + 1;
+        $data = "SELECT 
+                    odometer
+                FROM table8
+                ORDER BY odo_vehicle_number ASC, str_to_date( odo_date, '%d/%m/%Y %H:%i' ) DESC, $col $dir LIMIT $start2,$limit2";
+
+        $index1 = $this
+                ->db
+                ->query($data);
 
         $query = $this
                 ->db
-                ->limit($limit,$start)
-                ->order_by($col,$dir)
                 ->query($query_transaction_list);
+        
+        // foreach ($query->result() as $test)
+        // {
+
+        // }
+
+        if($query->num_rows()>0)
+        {
+            //print_r(array($query->result(),$index1->num_rows()));
+            return array($query->result(),$index1->result()); 
+        }
+        else
+        {
+            return null;
+        }
+        
+    }
+
+    function filter_alltransaction_odometer($limit,$start,$col,$dir)
+    {   
+        // $query = $this
+        //         ->db
+        //         ->limit($limit,$start)
+        //         ->order_by($col,$dir)
+        //         ->query($query_transaction_list);
+
+        $query = $this
+                ->db
+                ->select('
+                        id,
+                        odo_vehicle_number,
+                        odo_transaction_type,
+                        DATE_FORMAT(str_to_date( odo_date, "%d/%m/%Y %H:%i" ),"%d/%m/%Y") AS odo_date,
+                        odometer')
+                ->order_by('odo_vehicle_number','ASC')
+                ->order_by('odo_date','DESC')
+                ->order_by($col,$dir)
+                ->limit($limit,$start)
+                ->get('table8');
         
         if($query->num_rows()>0)
         {

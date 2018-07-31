@@ -27,7 +27,7 @@ class Reports extends CI_Controller
 
 		foreach ($news as $data)
 		{
-			$temp->setValue('vehicle_no#'.$iteration,$data['vehicle_no']);
+			$temp->setValue('vehicle_no#'.$iteration,$data['odo_vehicle_number']);
 			$iteration++;
 		}
 

@@ -163,9 +163,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                 $columns = array( 
                                     0 =>'id', 
-                                    1 =>'vehicle_no',
-                                    2=> 'transaction_type',
-                                    3=> 'date',
+                                    1 =>'odo_vehicle_number',
+                                    2=> 'odo_transaction_type',
+                                    3=> 'odo_date',
                                     4=> 'variance',
                                     5=> 'odometer',
                                     6=> 'remark',
@@ -174,14 +174,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                 $limit = $this->input->post('length');
                 $start = $this->input->post('start');
-                $order = $this->input->post('order')[0]['column'];
+                $order = $columns[$this->input->post('order')[0]['column']];
                 $dir = $this->input->post('order')[0]['dir'];
         
                 $totalData = $this->odometer_model->get_transaction_odometer();
                     
                 $totalFiltered = $totalData; 
                     
-                if(empty($this->input->post('search')['value']))
+                if(empty($this->input->post('search')['value'])||empty($this->input->post('order')[0]['column']))
                 {            
                     $posts = $this->odometer_model->get_alltransaction_odometer($limit,$start,$order,$dir);
                 }
@@ -194,67 +194,81 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 }
 
                 $data = array();
-                $countIndex = 1;
+                $no = $this->input->post('start')+1;
                 $x = 0;
                 $remark = "Complete";
                 // var_dump($posts[0]->odo_vehicle_number);
                 if(!empty($posts))
                 {
-                    foreach ($posts as $post)
+                    foreach ($posts[0] as $post)
                     {
-                        if($x == 0){
-                            $nestedData['id'] = $countIndex;
-                            $nestedData['vehicle_no'] = $post->odo_vehicle_number;
-                            $nestedData['transaction_type'] = $post->odo_transaction_type;
-                            $nestedData['date'] = $post->odo_date;
-                            $nestedData['variance'] = intval($posts[$x]->odometer)-intval($posts[$x+1]->odometer);
-                            $nestedData['odometer'] = $post->odometer;
-                            $nestedData['remark'] = $remark;
-                            $nestedData['index'] = $post->id;
-                        }
-                        else if($x == count($posts) - 1){
-                            $nestedData['id'] = $countIndex;
-                            $nestedData['vehicle_no'] = $post->odo_vehicle_number;
-                            $nestedData['transaction_type'] = $post->odo_transaction_type;
-                            $nestedData['date'] = $post->odo_date;
-                            $nestedData['variance'] = intval($posts[$x]->odometer);
-                            $nestedData['odometer'] = $post->odometer;
-                            $nestedData['remark'] = $remark;
-                            $nestedData['index'] = $post->id;
-                        }
-                        else if($posts[$x]->odo_vehicle_number != $posts[$x+1]->odo_vehicle_number){
-                            $nestedData['id'] = $countIndex;
-                            $nestedData['vehicle_no'] = $post->odo_vehicle_number;
-                            $nestedData['transaction_type'] = $post->odo_transaction_type;
-                            $nestedData['date'] = $post->odo_date;
-                            $nestedData['variance'] = '-';
-                            $nestedData['odometer'] = $post->odometer;
-                            $nestedData['index'] = $post->id;
-                        }
-                        else{
-                            $nestedData['id'] = $countIndex;
-                            $nestedData['vehicle_no'] = $post->odo_vehicle_number;
-                            $nestedData['transaction_type'] = $post->odo_transaction_type;
-                            $nestedData['date'] = $post->odo_date;
-                            $nestedData['variance'] = intval($posts[$x]->odometer)-intval($posts[$x+1]->odometer);
-                            $nestedData['odometer'] = $post->odometer;
-                            if($nestedData['variance']==0 && $nestedData['odometer']!=""){
-                                $nestedData['remark'] = "Incorrect Odometer";
-                            }
-                            else if($nestedData['variance']<0 && $nestedData['odometer']!=""){
-                                $nestedData['remark'] = "Incorrect Odometer";
-                            }
-                            else if($nestedData['odometer']==""){
-                                $nestedData['remark'] = "Not Key in Odometer";
-                            }
-                            else{
-                                $nestedData['remark'] = $remark;
-                            }
-                            $nestedData['index'] = $post->id;
-                        }
+                        $nestedData['id'] = $no;
+                        $nestedData['vehicle_no'] = $post->odo_vehicle_number;
+                        $nestedData['transaction_type'] = $post->odo_transaction_type;
+                        $nestedData['date'] = $post->odo_date;
+                        //$nestedData['variance'] = $post->odometer;
+                        
+                            $nestedData['variance'] = intval($posts[0][$x]->odometer)-intval($posts[1][$x]->odometer);
+                        
+                        // else if($x == count($posts[0]) - 1){
+                        //     $nestedData['variance'] = intval($posts[1][$x]->odometer);
+                        // }
+                        $nestedData['odometer'] = $post->odometer;
+                        $nestedData['remark'] = $remark;
+                        $nestedData['index'] = $post->id;
+                        // if($x == 0){
+                        //     $nestedData['id'] = $countIndex;
+                        //     $nestedData['vehicle_no'] = $post->odo_vehicle_number;
+                        //     $nestedData['transaction_type'] = $post->odo_transaction_type;
+                        //     $nestedData['date'] = $post->odo_date;
+                        //     $nestedData['variance'] = intval($posts[$x]->odometer)-intval($posts[$x+1]->odometer);
+                        //     $nestedData['odometer'] = $post->odometer;
+                        //     $nestedData['remark'] = $remark;
+                        //     $nestedData['index'] = $post->id;
+                        // }
+                        // else if($x == count($posts) - 1){
+                        //     $nestedData['id'] = $countIndex;
+                        //     $nestedData['vehicle_no'] = $post->odo_vehicle_number;
+                        //     $nestedData['transaction_type'] = $post->odo_transaction_type;
+                        //     $nestedData['date'] = $post->odo_date;
+                        //     $nestedData['variance'] = intval($posts[$x]->odometer);
+                        //     $nestedData['odometer'] = $post->odometer;
+                        //     $nestedData['remark'] = $remark;
+                        //     $nestedData['index'] = $post->id;
+                        // }
+                        // else if($posts[$x]->odo_vehicle_number != $posts[$x+1]->odo_vehicle_number){
+                        //     $nestedData['id'] = $countIndex;
+                        //     $nestedData['vehicle_no'] = $post->odo_vehicle_number;
+                        //     $nestedData['transaction_type'] = $post->odo_transaction_type;
+                        //     $nestedData['date'] = $post->odo_date;
+                        //     $nestedData['variance'] = '-';
+                        //     $nestedData['odometer'] = $post->odometer;
+                        //     $nestedData['index'] = $post->id;
+                        // }
+                        // else{
+                        //     $nestedData['id'] = $countIndex;
+                        //     $nestedData['vehicle_no'] = $post->odo_vehicle_number;
+                        //     $nestedData['transaction_type'] = $post->odo_transaction_type;
+                        //     $nestedData['date'] = $post->odo_date;
+                        //     $nestedData['variance'] = intval($posts[$x]->odometer)-intval($posts[$x+1]->odometer);
+                        //     $nestedData['odometer'] = $post->odometer;
+                        //     if($nestedData['variance']==0 && $nestedData['odometer']!=""){
+                        //         $nestedData['remark'] = "Incorrect Odometer";
+                        //     }
+                        //     else if($nestedData['variance']<0 && $nestedData['odometer']!=""){
+                        //         $nestedData['remark'] = "Incorrect Odometer";
+                        //     }
+                        //     else if($nestedData['odometer']==""){
+                        //         $nestedData['remark'] = "Not Key in Odometer";
+                        //     }
+                        //     else{
+                        //         $nestedData['remark'] = $remark;
+                        //     }
+                        //     $nestedData['index'] = $post->id;
+                        // }
                         
                         $data[] = $nestedData;
-                        $countIndex=$countIndex+1;
+                        $no=$no+1;
                         $x=$x+1;
                     }
                 }
